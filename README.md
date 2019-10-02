@@ -1,8 +1,13 @@
 <p align="center"><img src="https://github.com/DevDHera/TillWeMeet/blob/master/public/img/logo_160x160.jpg"></p>
 
+<p align="center">
+<a href="https://github.com/DevDHera/TillWeMeet/issues"><img alt="Issues" src="https://img.shields.io/github/issues/DevDHera/TillWeMeet"></a>
+<a href="https://github.com/DevDHera/TillWeMeet/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/github/license/DevDHera/TillWeMeet"></a>
+</p>
+
 # Till We Meet
 
-Project **Till We Meet** `dotnet-core` & `Angular` based social platform for find yours truly :cupid: in this busy world.
+Project **Till We Meet** is a `dotnet-core` & `Angular` based social platform for find yours truly :cupid: in this busy world.
 
 ## Getting Started
 
