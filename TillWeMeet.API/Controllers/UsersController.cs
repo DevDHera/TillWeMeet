@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TillWeMeet.API.Data;
 using TillWeMeet.API.Dtos;
+using TillWeMeet.API.Helpers;
 
 namespace TillWeMeet.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
