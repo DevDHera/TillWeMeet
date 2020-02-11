@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using TillWeMeet.API.Data;
 using TillWeMeet.API.Dtos;
 using TillWeMeet.API.Helpers;
+using TillWeMeet.API.Models;
 
 namespace TillWeMeet.API.Controllers
 {
@@ -73,6 +74,34 @@ namespace TillWeMeet.API.Controllers
                 return NoContent();
 
             throw new Exception($"Updating user {id} failed on save");
+        }
+
+        [HttpPost("{id}/like/{recipientId}")]
+        public async Task<IActionResult> LikeUser(int id, int recipientId)
+        {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var like = await _repo.GetLike(id, recipientId);
+
+            if (like != null)
+                return BadRequest("You already like this user");
+
+            if (await _repo.GetUser(recipientId) == null)
+                return NotFound();
+
+            like = new Like
+            {
+                LikerId = id,
+                LikeeId = recipientId
+            };
+
+            _repo.Add<Like>(like);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Failed to like user");
         }
     }
 }
